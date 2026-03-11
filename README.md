@@ -3,6 +3,43 @@
 
 **Key Approach:** Privacy-first on-premises AI combining RAG and LoRA fine-tuning for Llama-3, completely avoiding external APIs.
 
+```mermaid
+graph LR
+    subgraph "Phase 1: Prepare the Training Data"
+        A["Human<br>Create 74 initial questions with reference URLs"] --> B["LLaMA 3.3 - 70B<br>Generate 74 synthetic answers"]
+        B --> C["Human<br>Manual refinement"]
+        C --> D{74 Clean Q&A}
+        D --> E["LLaMA 3.3 - 70B<br>Rephrase questions (x11)"]
+        D --> F["LLaMA 3.3 - 70B<br>Rephrase answers (x4)"]
+        E --> G[(Training Dataset<br>3223 Q&A with reference URLs)]
+        F --> G
+    end
+
+    subgraph "Phase 2: Fine-Tuning Process (with Unsloth)"
+        H["Base Model<br>(LLaMA 3.1 8B)"]
+        G --> I["Start Training Process"]
+        H --> I{"LoRA Fine-Tuning"}
+        I --> J["Only train small Adapter layers (LoRA) ~1-2% of total parameters"]
+    end
+
+    subgraph "Phase 3: Results and Application"
+        J --> K["LoRA Weights<br>(Very small file, ~tens of MB)"]
+        K -- "Combine at runtime" --> L{"Fine-Tuned Model"}
+        H -- "Base" --> L
+        L --> M["Used in RAG Chatbot to improve accuracy"]
+    end
+
+    style A fill:#fff2cc,stroke:#333,stroke-width:2px
+    style B fill:#dae8fc,stroke:#333,stroke-width:2px
+    style C fill:#fff2cc,stroke:#333,stroke-width:2px
+    style E fill:#dae8fc,stroke:#333,stroke-width:2px
+    style F fill:#dae8fc,stroke:#333,stroke-width:2px
+    style G fill:#d5e8d4,stroke:#333,stroke-width:2px
+    style H fill:#dae8fc,stroke:#333,stroke-width:2px
+    style K fill:#e1d5e7,stroke:#333,stroke-width:2px
+    style L fill:#f8cecc,stroke:#333,stroke-width:2px
+```
+
 This project investigates the use of Retrieval-Augmented Generation (RAG) and LoRA-based fine-tuning to build efficient and secure internal chatbots using small open-weight language models. The goal is to minimise computational costs while avoiding reliance on external APIs like OpenAI, ensuring greater control over data privacy.
 
 Our first use case focuses on developing a legal assistant trained on the public laws of Wallis. We fine-tuned LLaMA 3.1 8B using synthetic question-answer pairs. While LoRA allowed efficient model adaptation, it did not yield significant performance improvements, and evaluation remained challenging due to subjective criteria and inconsistent automated metrics.
