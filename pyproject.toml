@@ -1,0 +1,70 @@
+[project]
+name = "lora"
+version = "0.1.0"
+description = "CIT module"
+authors = [{name = "Thuong Lam Ba Le"}]
+
+
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "atlassian-python-api>=3.41.21",
+    "authlib>=1.5.2",
+    "azure-identity>=1.21.0",
+    "dynaconf",
+    "faiss-gpu>=1.7.2",
+    "flashrank>=0.2.10",
+    "ipywidgets>=8.1.5",
+    "jira>=3.8.0",
+    "langchain>=0.3.19",
+    "langchain-community>=0.3.18",
+    "langchain-huggingface>=0.1.2",
+    "langchain-ollama>=0.2.3",
+    "langchain-openai>=0.3.7",
+    "langgraph>=0.3.0",
+    "langgraph-prebuilt>=0.1.0",
+    "llama-cpp-python>=0.3.8",
+    "llama-index==0.11.20",
+    "llama-index-core==0.11.21",
+    "llama-index-readers-confluence==0.2.1",
+    "markdown>=3.7",
+    "markdownify>=1.1.0",
+    "matplotlib>=3.10.0",
+    "office365-rest-python-client>=2.5.14",
+    "pandas>=2.2.3",
+    "prometheus-eval>=0.1.20",
+    "rank-llm>=0.21.0",
+    "seaborn>=0.13.2",
+    "sentence-transformers>=3.4.1",
+    "setuptools>=75.8.2",
+    "sns>=0.1",
+    "streamlit>=1.44.1",
+    "streamlit-authenticator>=0.4.2",
+    "torch>=2.6.0",
+    "torchvision>=0.21.0",
+    "unsloth>=2025.3.9",
+    "uuid>=1.30",
+    "vllm>=0.8.5.post1",
+    "wandb>=0.19.8",
+]
+
+[dependency-groups]
+dev = [
+    "ipykernel>=6.29.5",
+    "ruff>=0.11.7",
+]
+
+[tool.ruff.lint]
+
+extend-select = ["I"]
+
+
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+package-dir = { "" = "src" }
+
+[tool.setuptools.packages.find]
+where = ["src"]

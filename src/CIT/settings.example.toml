@@ -1,0 +1,5 @@
+COMPANY_NAME = "Acme Corp"
+CONFLUENCE_BASE_URL = "https://confluence.yourcompany.com"
+CONFLUENCE_PAGE_TEMPLATE = "https://confluence.yourcompany.com/spaces/IT/pages/{id}"
+JIRA_BASE_URL = "https://jira.yourcompany.com"
+JIRA_PORTAL_TEMPLATE = "https://jira.yourcompany.com/servicedesk/customer/portal/7/{key}"
