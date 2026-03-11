@@ -1,5 +1,8 @@
 # LoRA for RAG
-This project investigates the use of Retrieval-Augmented Generation (RAG) and LoRA-based fine-tuning to build efficient and secure internal chatbots using small open-weight language models. The goal is to minimize computational costs while avoiding reliance on external APIs like OpenAI, ensuring greater control over data privacy.
+Domain Focus: Legal Assistant (Law) & Internal IT Support (ITS).
+Key Approach: Privacy-first on-premises AI combining RAG and LoRA fine-tuning for Llama-3, completely avoiding external APIs.
+
+This project investigates the use of Retrieval-Augmented Generation (RAG) and LoRA-based fine-tuning to build efficient and secure internal chatbots using small open-weight language models. The goal is to minimise computational costs while avoiding reliance on external APIs like OpenAI, ensuring greater control over data privacy.
 
 Our first use case focuses on developing a legal assistant trained on the public laws of Wallis. We fine-tuned LLaMA 3.1 8B using synthetic question-answer pairs. While LoRA allowed efficient model adaptation, it did not yield significant performance improvements, and evaluation remained challenging due to subjective criteria and inconsistent automated metrics.
 
@@ -59,7 +62,7 @@ src
 │       └── training_script.py
 └── Wallis
     ├── evaluation
-    │   ├── eval_RAG_QA.py #eval the RAG with by a judge LLM
+    │   ├── eval_RAG_QA.py #eval the RAG by a judge LLM
     │   ├── filter_non_retrieved_questions.py
     │   ├── notebooks
     │   │   └── viz #notebooks to vizualize results
@@ -86,10 +89,10 @@ Then you can launch the RAG chatbot in a terminal (with the default arguments) w
 ```bash
 make run_rag
 ``` 
-If you need to adaot the parameters (chunks size, chunk overlap, top_k, threshold, model etc.) you can go to ./src/CIT/RAGs/launch_RAG.sh and set up the desired RAG.
+If you need to adapt the parameters (chunk size, chunk overlap, top_k, threshold, model, etc.), you can go to ./src/CIT/RAGs/launch_RAG.sh and set up the desired RAG.
 
 If you want to launch the user interface:\
-DEV (with hand on the RAG parameters and ongoing trials): The following command laucnh the streamlit app in ./src/CIT/UI/streamlit_app.py
+DEV (with hand on the RAG parameters and ongoing trials): The following command launches the streamlit app in ./src/CIT/UI/streamlit_app.py
 ```bash
 make launch_ui_dev
 ``` 
