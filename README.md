@@ -1,6 +1,7 @@
 # LoRA for RAG
-Domain Focus: Legal Assistant (Law) & Internal IT Support (ITS).
-Key Approach: Privacy-first on-premises AI combining RAG and LoRA fine-tuning for Llama-3, completely avoiding external APIs.
+**Domain Focus:** Legal Assistant (Law) & Internal IT Support (ITS).
+
+**Key Approach:** Privacy-first on-premises AI combining RAG and LoRA fine-tuning for Llama-3, completely avoiding external APIs.
 
 This project investigates the use of Retrieval-Augmented Generation (RAG) and LoRA-based fine-tuning to build efficient and secure internal chatbots using small open-weight language models. The goal is to minimise computational costs while avoiding reliance on external APIs like OpenAI, ensuring greater control over data privacy.
 
